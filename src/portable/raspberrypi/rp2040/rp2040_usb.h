@@ -76,13 +76,13 @@ static inline uint32_t _hw_endpoint_buffer_control_get_value32(struct hw_endpoin
     return *ep->buffer_control;
 }
 static inline void _hw_endpoint_buffer_control_set_value32(struct hw_endpoint *ep, uint32_t value) {
-    return _hw_endpoint_buffer_control_update32(ep, 0, value);
+    _hw_endpoint_buffer_control_update32(ep, 0, value);
 }
 static inline void _hw_endpoint_buffer_control_set_mask32(struct hw_endpoint *ep, uint32_t value) {
-    return _hw_endpoint_buffer_control_update32(ep, ~value, value);
+    _hw_endpoint_buffer_control_update32(ep, ~value, value);
 }
 static inline void _hw_endpoint_buffer_control_clear_mask32(struct hw_endpoint *ep, uint32_t value) {
-    return _hw_endpoint_buffer_control_update32(ep, ~value, 0);
+    _hw_endpoint_buffer_control_update32(ep, ~value, 0);
 }
 
 static inline uintptr_t hw_data_offset(uint8_t *buf)

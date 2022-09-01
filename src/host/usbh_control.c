@@ -109,7 +109,7 @@ bool usbh_control_xfer_cb (uint8_t dev_addr, uint8_t ep_addr, xfer_result_t resu
           hcd_edpt_xfer(rhport, dev_addr, tu_edpt_addr(0, request->bmRequestType_bit.direction), _ctrl_xfer.buffer, request->wLength);
           return true;
         }
-        __attribute__((fallthrough));
+        /* fall through */
 
       case STAGE_DATA:
         _ctrl_xfer.stage = STAGE_ACK;

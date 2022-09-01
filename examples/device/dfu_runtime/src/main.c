@@ -76,8 +76,6 @@ int main(void)
     tud_task(); // tinyusb device task
     led_blinking_task();
   }
-
-  return 0;
 }
 
 //--------------------------------------------------------------------+

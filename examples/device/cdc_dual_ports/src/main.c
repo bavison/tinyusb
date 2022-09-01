@@ -46,8 +46,6 @@ int main(void)
     tud_task(); // tinyusb device task
     cdc_task();
   }
-
-  return 0;
 }
 
 // echo to either Serial0 or Serial1

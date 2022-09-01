@@ -820,7 +820,7 @@ static bool enum_set_address_complete(uint8_t dev_addr, tusb_control_request_t c
   TU_ASSERT(0 == dev_addr);
   TU_ASSERT(XFER_RESULT_SUCCESS == result);
 
-  uint8_t const new_addr = (uint8_t const) request->wValue;
+  uint8_t const new_addr = (uint8_t) request->wValue;
 
   usbh_device_t* new_dev = get_device(new_addr);
   new_dev->addressed = 1;

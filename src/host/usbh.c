@@ -380,7 +380,7 @@ void tuh_task(void)
         {
           // device 0 only has control endpoint
           TU_ASSERT(epnum == 0, );
-          usbh_control_xfer_cb(event.dev_addr, ep_addr, event.xfer_complete.result, event.xfer_complete.len);
+          usbh_control_xfer_cb(event.dev_addr, ep_addr, (xfer_result_t) event.xfer_complete.result, event.xfer_complete.len);
         }
         else
         {
@@ -390,14 +390,14 @@ void tuh_task(void)
 
           if ( 0 == epnum )
           {
-            usbh_control_xfer_cb(event.dev_addr, ep_addr, event.xfer_complete.result, event.xfer_complete.len);
+            usbh_control_xfer_cb(event.dev_addr, ep_addr, (xfer_result_t) event.xfer_complete.result, event.xfer_complete.len);
           }else
           {
             uint8_t drv_id = dev->ep2drv[epnum][ep_dir];
             TU_ASSERT(drv_id < USBH_CLASS_DRIVER_COUNT, );
 
             TU_LOG2("%s xfer callback\r\n", usbh_class_drivers[drv_id].name);
-            usbh_class_drivers[drv_id].xfer_cb(event.dev_addr, ep_addr, event.xfer_complete.result, event.xfer_complete.len);
+            usbh_class_drivers[drv_id].xfer_cb(event.dev_addr, ep_addr, (xfer_result_t) event.xfer_complete.result, event.xfer_complete.len);
           }
         }
       }

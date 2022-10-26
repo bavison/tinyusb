@@ -515,7 +515,9 @@ bool usbtmcd_xfer_cb(uint8_t rhport, uint8_t ep_addr, xfer_result_t result, uint
 
     case STATE_ABORTING_BULK_OUT:
       TU_VERIFY(false); // Should be stalled by now, shouldn't have received a packet.
+#ifndef __clang__
       TU_ATTR_FALLTHROUGH; // Not really - some compilers can't figure out that the above macro always returns.
+#endif
 
     case STATE_TX_REQUESTED:
     case STATE_TX_INITIATED:
@@ -876,7 +878,9 @@ bool usbtmcd_control_xfer_cb(uint8_t rhport, uint8_t stage, tusb_control_request
     {
       TU_VERIFY(request->bmRequestType == 0xA1); // in,class,interface
       TU_VERIFY(false);
+#ifndef __clang__
       TU_ATTR_FALLTHROUGH; // Not really - some compilers can't figure out that the above macro always returns.
+#endif
     }
 #endif
 

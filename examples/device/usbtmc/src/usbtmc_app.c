@@ -23,7 +23,7 @@
  *
  */
 
-#ifdef __ICCARM__
+#if defined(__ICCARM__) || defined(__ARMCOMPILER_VERSION)
 #include <string.h>
 #else
 #include <strings.h>

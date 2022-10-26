@@ -271,12 +271,14 @@ static void __tusb_irq_path_func(dcd_rp2040_irq)(void)
     if (status & USB_INTS_SETUP_REQ_BITS)
     {
         handled |= USB_INTS_SETUP_REQ_BITS;
-        uint8_t const *setup = (uint8_t const *)&usb_dpram->setup_packet;
 
         // reset pid to both 1 (data and ack)
         reset_ep0_pid();
 
         // Pass setup packet to tiny usb
+        uint8_t setup[8];
+        for (int i = 0; i < 8; ++i)
+            setup[i] = usb_dpram->setup_packet[i];
         dcd_event_setup_received(0, setup, true);
         usb_hw_clear->sie_status = USB_SIE_STATUS_SETUP_REC_BITS;
     }

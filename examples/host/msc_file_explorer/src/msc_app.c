@@ -271,8 +271,6 @@ DRESULT disk_ioctl (
     default:
       return RES_PARERR;
   }
-
-	return RES_OK;
 }
 
 //--------------------------------------------------------------------+

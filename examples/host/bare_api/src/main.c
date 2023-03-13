@@ -73,8 +73,6 @@ int main(void)
     tuh_task();
     led_blinking_task();
   }
-
-  return 0;
 }
 
 /*------------- TinyUSB Callbacks -------------*/

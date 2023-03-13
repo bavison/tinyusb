@@ -465,7 +465,7 @@ void tuh_task_ext(uint32_t timeout_ms, bool in_isr)
                 {
                   .daddr       = event.dev_addr,
                   .ep_addr     = ep_addr,
-                  .result      = event.xfer_complete.result,
+                  .result      = (xfer_result_t) event.xfer_complete.result,
                   .actual_len  = event.xfer_complete.len,
                   .buflen      = 0,    // not available
                   .buffer      = NULL, // not available

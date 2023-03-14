@@ -555,6 +555,7 @@ static void process_cdc_config(tuh_xfer_t* xfer)
     TU_ATTR_FALLTHROUGH;
 
     case CONFIG_COMPLETE:
+    {
       if (tuh_cdc_mount_cb) tuh_cdc_mount_cb(idx);
 
       // Prepare for incoming data
@@ -564,7 +565,8 @@ static void process_cdc_config(tuh_xfer_t* xfer)
       // notify usbh that driver enumeration is complete
       // itf_num+1 to account for data interface as well
       usbh_driver_set_config_complete(xfer->daddr, itf_num+1);
-    break;
+      break;
+    }
 
     default: break;
   }

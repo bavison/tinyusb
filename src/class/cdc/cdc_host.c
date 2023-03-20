@@ -541,8 +541,9 @@ static void process_cdc_config(tuh_xfer_t* xfer)
     #if CFG_TUH_CDC_LINE_CONTROL_ON_ENUM
       TU_ASSERT( tuh_cdc_set_control_line_state(idx, CFG_TUH_CDC_LINE_CONTROL_ON_ENUM, process_cdc_config, CONFIG_SET_LINE_CODING), );
       break;
-    #endif
+    #else
     TU_ATTR_FALLTHROUGH;
+    #endif
 
     case CONFIG_SET_LINE_CODING:
     #ifdef CFG_TUH_CDC_LINE_CODING_ON_ENUM
@@ -551,8 +552,9 @@ static void process_cdc_config(tuh_xfer_t* xfer)
       TU_ASSERT( tuh_cdc_set_line_coding(idx, &line_coding, process_cdc_config, CONFIG_COMPLETE), );
       break;
     }
-    #endif
+    #else
     TU_ATTR_FALLTHROUGH;
+    #endif
 
     case CONFIG_COMPLETE:
     {
